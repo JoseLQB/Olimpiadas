@@ -1,0 +1,33 @@
+.fuerza{
+    width: 100px;
+    height: 25px;
+    background-color: cadetblue;
+    margin-bottom: 10px;
+}
+.carga-fuerza{
+    width: 1px;
+    height: 25px;
+    background-color: crimson;
+}
+.angulo{
+    width: 90px;
+    height: 25px;
+    background-color: cadetblue;
+    margin-bottom: 10px;
+}
+.carga-angulo{
+    width: 1px;
+    height: 25px;
+    background-color: crimson;
+}
+
+.btn-fuerza-parada,.btn-angulo-parada, .btn-angulo, .btn-lanzar{
+    display: none;
+}
+
+.bola{
+    position: absolute;
+    bottom: 0;
+    width: 20px;
+    height: 20px;
+}
