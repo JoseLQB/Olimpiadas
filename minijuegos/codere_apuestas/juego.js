@@ -24,10 +24,15 @@ $(document).ready(function(){
         var vRojo = velocidad(1, 3)*1000;
         var vVerde = velocidad(1, 3)*1000;
         var vNaranja = velocidad(1, 3)*1000;
-        $("#azul").animate({left: "1100",}, vAzul);
-        $("#rojo").animate({left: "1100",},vRojo);
-        $("#verde").animate({left: "1100",},vVerde);
-        $("#naranja").animate({left: "1100",},vNaranja);  
+        $("#azul").animate({left: "1200",}, vAzul);
+        $("#rojo").animate({left: "1200",},vRojo);
+        $("#verde").animate({left: "1200",},vVerde);
+        $("#naranja").animate({left: "1200",},vNaranja);  
+        //Movimiento de escenario
+        $('#carrera').animate({
+            'background-position-x': '100%'
+        }, 10000, 'linear');
+    
     })
    // setTimeout(ganador, 6000, "vAzul", "vRojo", "vVerde", "vNaranja");
 });
