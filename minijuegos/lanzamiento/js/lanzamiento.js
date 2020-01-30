@@ -65,9 +65,11 @@ $(document).ready(function () {
 
     $(".btn-lanzar").click(function () {
 
-        var velocidad = $(".carga-fuerza").css("width");
-        var angulo = $(".carga-angulo").css("width");
-        congela_gif("lanzador")
+        var velocidad = $(".carga-fuerza").css("width"); //Recoge la velocidad
+        var angulo = $(".carga-angulo").css("width"); //Recoge el ángulo
+        congela_gif("lanzador"); // Llama a la función que congela el muñeco
+        $(".bola").css("display","block");
+        $(".btn-lanzar").css("display","none");
         velocidad = velocidad.slice(0,-2);
         angulo = angulo.slice(0,-2);
         // Cálculo la x máxima
