@@ -1,12 +1,11 @@
 body{
 	background:black;
 }
-h1, h3{
+h1, h3, h4,p{
 	color: white;
 }
-div.imagen{
+article.imagen{
 	column-count: 3;
-
 	column-gap: 3em;
 }
 img {
@@ -15,4 +14,15 @@ img {
 	border-style: solid;
 	border-width: 2px;
 	border-color: white;
+}
+article{
+	float: left;
+	width: 60%;
+}
+aside{
+	float: right;
+	width: 40%;
+}
+p{
+	text-align: center;
 }
