@@ -63,9 +63,11 @@ $(document).ready(function () {
         },5);   
     });
 
-    $(".btn-lanzar").click(function () { 
+    $(".btn-lanzar").click(function () {
+
         var velocidad = $(".carga-fuerza").css("width");
         var angulo = $(".carga-angulo").css("width");
+        congela_gif("lanzador")
         velocidad = velocidad.slice(0,-2);
         angulo = angulo.slice(0,-2);
         // Cálculo la x máxima
@@ -98,4 +100,21 @@ $(document).ready(function () {
         }
         return velocidadIntervalo;
     }
+
+    // Para congelar el gif una vez que lance la bala   
+    function congela_gif(src) {
+        i = document.getElementById(src);
+        var c = document.createElement('canvas');
+        var w = c.width = i.width;
+        var h = c.height = i.height;
+        c.getContext('2d').drawImage(i, 0, 0, w, h);
+        try {
+            i.src = c.toDataURL("../images"); // if possible, retain all css aspects
+        } catch(e) { // cross-domain -- mimic original with all its tag attributes
+            for (var j = 0, a; a = i.attributes[j]; j++)
+                c.setAttribute(a.name, a.value);
+                i.parentNode.replaceChild(c, i);
+        }
+    }
+
 });
