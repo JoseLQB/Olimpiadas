@@ -44,8 +44,10 @@ $(document).ready(function(){
 	}
 	$('img').click(function(){
 		if ($(this).attr('src') == src){
-			$(this).attr('src', './imagenes/bien.jpg');
-			cont =0;
+			$('.imagen').css('display','none');
+			$('.acierto').css('display','block');
+			$('.bien').attr('src', './imagenes/bien.jpg');
+			//cont =0;
 		}
 		else{
 			$(this).attr('src', './imagenes/mal.jpg');
