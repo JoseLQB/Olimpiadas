@@ -1,3 +1,9 @@
+body{
+    background-image: url("../images/campo.jpeg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .fuerza{
     width: 100px;
     height: 25px;
@@ -25,11 +31,17 @@
     display: none;
 }
 
+.puntuacion{
+    display: none;
+    position: absolute;
+    background-color: white;
+} 
+
 .bola{
     position: absolute;
     bottom: 0;
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     display: none;
 }
 
@@ -37,4 +49,5 @@
     position: absolute;
     bottom: 0;
     left: 0;
+    width: 12%;
 }

@@ -77,23 +77,34 @@ $(document).ready(function () {
         anguloEnRadianes = angulo * Math.PI / 180;
         xMax = Math.pow(velocidad,2)*(Math.sin(2*anguloEnRadianes));
         xMax = xMax/G;
-        var x = 1;
-        var y = 1;
-        var velocidadIntervalo = velocidadVisual(velocidad);
+        xMax = factorSuerte(xMax);
+        xMax += 100; //desplazamiento
+        var x = 100; // desplazamiento para que la bala salga desde el muñeco.
+        var y = 200;
+        var velocidadIntervalo = velocidadVisual(velocidad,angulo);
         var intervaloLanzamiento = setInterval(function(){
-            if (x<=xMax){
-                y = x*Math.tan(anguloEnRadianes)-((G*Math.pow(x,2))/(2*Math.pow(velocidad,2)*Math.pow(Math.cos(anguloEnRadianes),2)));
-                $(".bola").css("bottom", y);
-                $(".bola").css("left", x);
+            y = x*Math.tan(anguloEnRadianes)-((G*Math.pow(x,2))/(2*Math.pow(velocidad,2)*Math.pow(Math.cos(anguloEnRadianes),2)));
+            if (y>=0){
+                $(".bola").css("bottom", y+"px");
+                $(".bola").css("left", x+"px");
                 x++;
             } else {
+                $(".puntuacion").css("display", "block");
+                $(".puntuacion").css("top", "75%");
+                $(".puntuacion").css("left", "10%");
+                if (xMax <600){
+                    $(".puntuacion").text("UY QUE MALO!!!"+xMax);
+                } else {
+                    $(".puntuacion").text("UY QUE BUENO!!!"+xMax);
+                }
                 clearInterval(intervaloLanzamiento);
+
             }
         },velocidadIntervalo);      
     });
 
-    function velocidadVisual(velocidad) { // Velocidad a la que se ve el lanzamiento dependiendo de la velocidad.
-        if (velocidad >= 0 && velocidad < 33){
+    function velocidadVisual(velocidad,angulo) { // Velocidad a la que se ve el lanzamiento dependiendo de la velocidad.
+        if ((velocidad >= 0 && velocidad < 33)||angulo>80){
             velocidadIntervalo = 15;
         } else if (velocidad >= 33 && velocidad < 66){
             velocidadIntervalo = 10;
@@ -111,12 +122,18 @@ $(document).ready(function () {
         var h = c.height = i.height;
         c.getContext('2d').drawImage(i, 0, 0, w, h);
         try {
-            i.src = c.toDataURL("../images"); // if possible, retain all css aspects
-        } catch(e) { // cross-domain -- mimic original with all its tag attributes
+            i.src = c.toDataURL("../images");
+        } catch(e) { 
             for (var j = 0, a; a = i.attributes[j]; j++)
                 c.setAttribute(a.name, a.value);
                 i.parentNode.replaceChild(c, i);
         }
+    }
+
+    function factorSuerte(xMax){
+        var suerte = Math.floor(Math.random() * 9) + 1;
+        suerte = 1 + suerte/10;
+        return xMax*suerte;
     }
 
 });
