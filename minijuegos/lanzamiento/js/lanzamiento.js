@@ -80,11 +80,16 @@ $(document).ready(function () {
         xMax = factorSuerte(xMax);
         xMax += 100; //desplazamiento
         var x = 100; // desplazamiento para que la bala salga desde el muñeco.
-        var y = 200;
+        var y = 0;
         var velocidadIntervalo = velocidadVisual(velocidad,angulo);
         var intervaloLanzamiento = setInterval(function(){
-            y = x*Math.tan(anguloEnRadianes)-((G*Math.pow(x,2))/(2*Math.pow(velocidad,2)*Math.pow(Math.cos(anguloEnRadianes),2)));
-            if (y>=0){
+            if (x<=xMax) {
+                y = x*Math.tan(anguloEnRadianes)-((G*Math.pow(x,2))/(2*Math.pow(velocidad,2)*Math.pow(Math.cos(anguloEnRadianes),2)));
+                y += 100;
+            } else {
+                y = x*Math.tan(anguloEnRadianes)-((G*Math.pow(x,2))/(2*Math.pow(velocidad,2)*Math.pow(Math.cos(anguloEnRadianes),2)));
+            }
+            if (y>0){
                 $(".bola").css("bottom", y+"px");
                 $(".bola").css("left", x+"px");
                 x++;
@@ -98,18 +103,17 @@ $(document).ready(function () {
                     $(".puntuacion").text("UY QUE BUENO!!!"+xMax);
                 }
                 clearInterval(intervaloLanzamiento);
-
             }
         },velocidadIntervalo);      
     });
 
     function velocidadVisual(velocidad,angulo) { // Velocidad a la que se ve el lanzamiento dependiendo de la velocidad.
         if ((velocidad >= 0 && velocidad < 33)||angulo>80){
-            velocidadIntervalo = 15;
-        } else if (velocidad >= 33 && velocidad < 66){
             velocidadIntervalo = 10;
-        } else{
+        } else if (velocidad >= 33 && velocidad < 66){
             velocidadIntervalo = 5;
+        } else{
+            velocidadIntervalo = 1;
         }
         return velocidadIntervalo;
     }
