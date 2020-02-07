@@ -1,0 +1,40 @@
+img{
+    height: 150px;
+    width: 150px;
+}
+
+/* .col-12 {
+    height: 900px;
+    width: 800px;
+    background-image: url("descenso.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+} */
+
+#calle-cont{
+    width:93%;
+    height:380px;
+    overflow:hidden;
+    position:relative;
+    margin:-200px 0 0 200px;
+    }
+ 
+ .calle{
+    width:1700px;
+    height:500px;
+    border-radius: 800px / 500px;
+    behavior: url(descenso.jpg);
+    border:100px solid white;
+    position:relative;
+    z-index:22;
+    }
+
+#kayak {
+position: absolute;
+pointer-events: none;
+}
+
+#Selection {
+	fill: aquamarine;
+z-index: 10;
+}
